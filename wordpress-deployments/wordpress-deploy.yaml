@@ -44,5 +44,3 @@ spec:
           value: SECURE_LOGGED_IN_SALT
         ports:
         - containerPort: 80
-          name: phpmyadmin
-
