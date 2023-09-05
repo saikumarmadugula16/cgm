@@ -9,3 +9,15 @@
 #   resources:
 #     requests:
 #       storage: 250Mi
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: local-hostpath-pvc
+spec:
+  storageClassName: openebs-hostpath
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
