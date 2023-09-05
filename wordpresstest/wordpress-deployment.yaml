@@ -31,6 +31,6 @@ spec:
         - name: WORDPRESS_DEBUG
           value: "1"
       volumes:
-      - name: wp-pvc
+      - name: wp-pv-claim
         persistentVolumeClaim:
           claimName: mysql-pvc
