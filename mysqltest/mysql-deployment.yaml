@@ -33,3 +33,6 @@ spec:
           value: DEVOPS12345
         - name: MYSQL_DATABASE
           value: wpdb
+        volumeMounts:
+        - mountPath: /mnt/store
+          name: mysql-pv
