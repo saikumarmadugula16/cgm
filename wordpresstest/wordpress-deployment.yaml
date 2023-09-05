@@ -30,10 +30,3 @@ spec:
           value: wpdb
         - name: WORDPRESS_DEBUG
           value: "1"
-        volumeMounts:
-            - name: wp-pv-claim
-              mountPath: /var/www/html
-      volumes:
-      - name: wp-pv-claim
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
