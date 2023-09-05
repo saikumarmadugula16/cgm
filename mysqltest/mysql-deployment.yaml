@@ -1,11 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: mysql-deployment
   labels:
     app: mysql
-    argocd.argoproj.io/instance: mysql
-  name: mysql-deployment
-  namespace: argocd
 spec:
   replicas: 1
   selector:
@@ -17,23 +15,16 @@ spec:
         app: mysql
     spec:
       containers:
-        - env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: DEVOPS1
-            - name: MYSQL_USER
-              value: wpuser
-            - name: MYSQL_PASSWORD
-              value: DEVOPS12345
-            - name: MYSQL_DATABASE
-              value: wpdb
-          image: 'mysql:5.7'
-          name: mysql
-          ports:
-            - containerPort: 80
-          volumeMounts:
-            - mountPath: /mnt/store
-              name: mysql-pv
-      volumes:
-      - name: mysql-pv
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
+      - name: mysql
+        image: mysql:5.7
+        ports:
+        - containerPort: 80
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: DEVOPS1
+        - name: MYSQL_USER
+          value: wpuser
+        - name: MYSQL_PASSWORD
+          value: DEVOPS12345
+        - name: MYSQL_DATABASE
+          value: wpdb
