@@ -1,9 +1,0 @@
-#command: kubectl create secret generic mysql-user-pass  --from-literal=username=admin --from-literal=password=admin --dry-run=client -o yaml > mysql-user-pass.yaml
-apiVersion: v1
-data:
-  password: YWRtaW4=
-  username: YWRtaW4=
-kind: Secret
-metadata:
-  creationTimestamp: null
-  name: mysql-user-pass
