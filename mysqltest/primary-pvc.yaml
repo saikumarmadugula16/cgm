@@ -1,10 +1,10 @@
-kind: PersistentVolumeClaim
+Kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  annotations:
-    trident.netapp.io/shareFromPVC: payroll/mysql-pvc
-  name: wp-pvc
-  namespace: payroll
+  annotations :
+    trident.netapp.io/shareToNamespace: payroll
+  name: mysql-pvc
+  namespace: argocd
 spec:
   accessModes:
     - ReadWriteMany
