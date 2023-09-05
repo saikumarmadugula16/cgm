@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        ports:
+        - containerPort: 80
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: DEVOPS1
+        - name: MYSQL_USER
+          value: wpuser
+        - name: MYSQL_PASSWORD
+          value: DEVOPS12345
+        - name: MYSQL_DATABASE
+          value: wpdb
