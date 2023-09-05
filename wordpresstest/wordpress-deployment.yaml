@@ -14,11 +14,6 @@ spec:
       labels:
         app: wordpress
     spec:
-      volumes:
-      - name: mysql-pv
-        persistentVolumeClaim:
-          claimName: wp-pv-claim
-    spec:
       containers:
       - name: wordpress
         image: wordpress
@@ -35,3 +30,7 @@ spec:
           value: wpdb
         - name: WORDPRESS_DEBUG
           value: "1"
+      volumes:
+      - name: wp-pvc
+        persistentVolumeClaim:
+          claimName: mysql-pvc
