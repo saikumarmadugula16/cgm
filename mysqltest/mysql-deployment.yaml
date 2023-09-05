@@ -9,6 +9,11 @@ spec:
   selector:
     matchLabels:
       app: mysql
+    spec:
+      volumes:
+      - name: mysql-pv
+        persistentVolumeClaim:
+        claimName: mysql-pv-claim
   template:
     metadata:
       labels:
