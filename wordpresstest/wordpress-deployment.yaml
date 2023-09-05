@@ -14,6 +14,11 @@ spec:
       labels:
         app: wordpress
     spec:
+      volumes:
+      - name: mysql-pv
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+    spec:
       containers:
       - name: wordpress
         image: wordpress
