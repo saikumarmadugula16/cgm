@@ -17,7 +17,7 @@ spec:
       volumes:
       - name: mysql-pv
         persistentVolumeClaim:
-          claimName: mysql-pv-claim
+          claimName: local-hostpath-pvc
     spec:
       containers:
       - name: mysql
