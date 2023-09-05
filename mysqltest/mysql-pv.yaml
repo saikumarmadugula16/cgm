@@ -10,3 +10,7 @@ spec:
     - ReadWriteMany
   hostPath:
     path: "/var/lib/mysql"
+  storageClassName: openebs-hostpath
+  volumeMode: Filesystem
+status:
+  phase: Bound
