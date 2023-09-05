@@ -7,6 +7,6 @@ spec:
   capacity:
     storage: 2G
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
     path: "/var/lib/mysql"
