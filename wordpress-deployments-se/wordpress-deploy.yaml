@@ -29,14 +29,6 @@ spec:
             secretKeyRef:
               name: mysql-user-pass
               key: password
-        - name: WORDPRESS_AUTH_KEY
-          value: SECURE_AUTH_KEY
-        - name: WORDPRESS_LOGGED_IN_KEY
-          value: SECURE_LOGGED_IN_KEY
-        - name: WORDPRESS_AUTH_SALT
-          value: SECURE_AUTH_SALT
-        - name: WORDPRESS_LOGGED_IN_SALT
-          value: SECURE_LOGGED_IN_SALT
         ports:
         - containerPort: 80
           name: mysql
