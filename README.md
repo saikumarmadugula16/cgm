@@ -87,6 +87,14 @@ This can be useful if we have morethan one ingressclasses
 - Update Helm repositories: `helm repo update`
 - Install ArgoCD using Helm: `helm install argocd argo/argo-cd --namespace argocd`
 - Get ArgoCD admin password: `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+  
+Expose ArgoCD-Server via ingress, use passthrough SSL
+Kubectl apply -f argo-ingress.yaml -n argocd
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+Add ingress hostname in C:\Windows\System32\drivers\etc\hosts
+kubectl -n argocd port-forward pod/argocd-server-6b5ffb984b-75xq7 --address 0.0.0.0 80:80 443:443
+Getting Issues......
+So, I followed a traditional method.
 - Disable Certificate check: kubectl -n argocd edit deployments.app argocd-server
 add --insecure to containers spec
 - Patch ArgoCD Server service to use NodePort: `kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'`
