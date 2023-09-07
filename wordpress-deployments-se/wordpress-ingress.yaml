@@ -1,21 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: wordpress-ingress
-  namespace: wordpress-ns
   annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/ssl-passthrough: 'true'
+  labels:
+    argocd.argoproj.io/instance: wordpress-se
+  name: wordpress-se-ingress
+  namespace: wordpress-ns
 spec:
   ingressClassName: nginx
   rules:
-  - host: payroll-wordpress-se-cgm.com # Replace with your desired hostname
-    http:
-      paths:
-      - path: /wordpress  # Replace with your desired path
-        pathType: Prefix
-        backend:
-          service:
-            name: wordpress-service
-            port:
-              number: 80
+    - host: payroll-wordpress-se-cgm.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: wordpress-service
+                port:
+                  number: 80
+            path: /wordpress
+            pathType: Prefix
