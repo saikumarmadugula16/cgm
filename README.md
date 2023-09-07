@@ -129,7 +129,7 @@ Path: wordpresstest
 
 
 C:\Windows\System32\drivers\etc\hosts local server. Then applied port-forward to access the application by using host.
-
+Optional: kubectl patch svc wordpress-service -n payroll -p '{"spec": {"type": "LoadBalancer"}}'
 kubectl -n payroll port-forward pod/wordpress-deployment-7b8b5d854f-sdpdt --address 0.0.0.0 80:80 443:443.
 
 
