@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: payroll-wordpress-cgm.com # Replace with your desired hostname
+  - host: payroll-wordpress-se-cgm.com # Replace with your desired hostname
     http:
       paths:
       - path: /wordpress  # Replace with your desired path
