@@ -18,7 +18,10 @@ spec:
         image: wordpress 
         env:
         - name: WORDPRESS_DB_HOST
-          value: 172.23.215.1:30007
+          #value: 172.23.215.1:30007
+          valueFrom:
+            secretKeyRef:
+              name: mysql-db-url
         - name: WORDPRESS_DB_USER
           valueFrom:
             secretKeyRef:
