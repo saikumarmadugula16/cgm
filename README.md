@@ -91,13 +91,9 @@ This can be useful if we have morethan one ingressclasses
 Expose ArgoCD-Server via ingress, use passthrough SSL
 Kubectl apply -f argo-ingress.yaml -n argocd
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-Add ingress hostname in C:\Windows\System32\drivers\etc\hosts
-kubectl -n argocd port-forward pod/argocd-server-6b5ffb984b-75xq7 --address 0.0.0.0 80:80 443:443
-Getting Issues......
-So, I followed a traditional method.
-- Disable Certificate check: kubectl -n argocd edit deployments.app argocd-server
-add --insecure to containers spec
-- Patch ArgoCD Server service to use NodePort: `kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'`
+Add tls min version: kubectl -n argocd edit deployments.app argocd-server
+add --tlsminversion=1.2 to containers spec
+Port forward: kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 **ArgoCD Access:**
 - Access the ArgoCD UI in your browser: `<worker-external-ip>:<node-port>`
@@ -129,8 +125,10 @@ Path: wordpresstest
 
 
 C:\Windows\System32\drivers\etc\hosts local server. Then applied port-forward to access the application by using host.
-Optional: kubectl patch svc wordpress-service -n payroll -p '{"spec": {"type": "LoadBalancer"}}'
+kubectl patch svc wordpress-service -n payroll -p '{"spec": {"type": "LoadBalancer"}}'
 kubectl -n payroll port-forward pod/wordpress-deployment-7b8b5d854f-sdpdt --address 0.0.0.0 80:80 443:443.
+or
+kubectl port-forward svc/wordpress-service -n payroll 80:80
 
 
 				—------ END —---
